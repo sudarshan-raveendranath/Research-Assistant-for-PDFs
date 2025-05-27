@@ -10,7 +10,31 @@ export default function FileUpload({ isAuthenticated }) {
     const [summaryType, setSummaryType] = useState('single');
     const [loading, setLoading] = useState(false);
 
-    const handleFileChange = (e) => setFile(e.target.files[0]);
+    const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+
+    if (!selectedFile) {
+        setFile(null);
+        return;
+    }
+
+    const maxSizeInBytes = 10 * 1024 * 1024; // 10MB limit
+
+    if (selectedFile.type !== 'application/pdf') {
+        alert('Only PDF files are allowed.');
+        e.target.value = null;
+        return;
+    }
+
+    if (selectedFile.size > maxSizeInBytes) {
+        alert('File size exceeds 10MB limit.');
+        e.target.value = null;
+        return;
+    }
+
+    setFile(selectedFile);
+};
+
 
     const handleSummarize = async () => {
         const formData = new FormData();
@@ -100,7 +124,6 @@ export default function FileUpload({ isAuthenticated }) {
                         justifyContent: 'center',
                     }}
                 >
-                    {/* File Upload */}
                     <Box sx={{ minWidth: 220, width: 220, display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '5px' }}>
                         <InputLabel
                             sx={{
@@ -142,7 +165,6 @@ export default function FileUpload({ isAuthenticated }) {
                         </Box>
                     </Box>
 
-                    {/* Model Selection */}
                     <Box sx={{ minWidth: 220, width: 220, marginLeft: '5px' }}>
                         <InputLabel
                             sx={{
@@ -176,7 +198,6 @@ export default function FileUpload({ isAuthenticated }) {
                     </Box>
                 </Box>
 
-                {/* Summarize Button */}
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
                     <Button
                         variant="contained"
@@ -218,7 +239,6 @@ export default function FileUpload({ isAuthenticated }) {
                     )}
                 </Box>
 
-                {/* Summary Display */}
                 {summary && (
                     <Box
                         mt={6}
@@ -234,7 +254,6 @@ export default function FileUpload({ isAuthenticated }) {
                             Summary
                         </Typography>
 
-                        {/* If it's structured */}
                         {summaryType === 'single' || /\*\*(.+?):\*\*/.test(summary.result || summary) ? (
                             parseSummary(summary.result || summary).map(({ title, content }) => (
                                 <Box key={title} mb={4}>

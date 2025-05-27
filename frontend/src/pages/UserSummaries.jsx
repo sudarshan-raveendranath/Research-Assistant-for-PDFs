@@ -58,7 +58,6 @@ export default function UserSummaries() {
     setExpandedId(expandedId === id ? null : id);
   };
 
-  // Parse the summary string into structured sections (reuse from your FileUpload)
   function parseSummary(summaryString) {
     const sectionRegex = /\*\*(.+?):\*\*/g;
     const result = [];
@@ -179,7 +178,6 @@ export default function UserSummaries() {
                     </Typography>
 
                     <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-                      {/* Show parsed summary details */}
                       {parsedSummary.length > 0 ? (
                         parsedSummary.map(({ title, content }) => (
                           <Box key={title} mb={2}>
