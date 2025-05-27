@@ -29,12 +29,10 @@ def create_faiss_index(
             logger.info("FAISS index already exists. Skipping creation.")
             return
 
-        logger.info("Creating new FAISS index...")
         vector_db = FAISS.from_documents(documents, embeddings_model)
 
         index_path.mkdir(parents=True, exist_ok=True)
         vector_db.save_local(str(index_path))
-        logger.info("FAISS index successfully saved at '%s'", index_path)
 
     except Exception as e:
         logger.error("Failed to create FAISS index: %s", str(e), exc_info=True)
@@ -65,7 +63,6 @@ def load_faiss_index(
             embeddings_model,
             allow_dangerous_deserialization=True
         )
-        logger.info("FAISS index successfully loaded from '%s'", index_path)
         return vector_store
 
     except Exception as e:

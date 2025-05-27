@@ -2,4 +2,4 @@
 from langchain_community.chat_models import ChatOllama
 
 def get_ollama_llm():
-    return ChatOllama(model="llama3")
+    return ChatOllama(model="llama3.2:3b")
