@@ -1,20 +1,25 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from app.auth.jwt import get_current_user
-from app.schemas.pdf_schemas import PDFUploadRequest
 from app.utils.pdf_loader import load_pdf_pages
 from app.utils.text_splitter import split_text
 from app.utils.embedding_generator import get_embeddings_model
 from app.utils.vector_store import create_faiss_index
 from app.services.summerizer_service import generate_rag_summary
+from langchain.schema import Document
+from fastapi import Form
 import aiofiles
 import tempfile
 import os
+import logging
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 router = APIRouter(prefix="/pdf", tags=["PDF Upload and Summarization"])
 
 @router.post("/upload")
 async def upload_pdf(
-    model_data: PDFUploadRequest,
+    model: str = Form(...),  # <== changed from model_data: PDFUploadRequest
     file: UploadFile = File(...),
     current_user: str = Depends(get_current_user)
 ):
@@ -32,10 +37,12 @@ async def upload_pdf(
         
         chunks = split_text(pdf_text)
         embeddings_model = get_embeddings_model()
-        documents = [{"page_content": chunk} for chunk in chunks]
+        
+        documents = [Document(page_content=chunk) for chunk in chunks]
         create_faiss_index(documents, embeddings_model, index_path=f"faiss_indexes/{title}")
 
-        summary = await generate_rag_summary(model_data.model, title, current_user)
+        summary = await generate_rag_summary(model, title, current_user)
+        logger.info("Summary generated")
 
         return {
             "summary": summary,

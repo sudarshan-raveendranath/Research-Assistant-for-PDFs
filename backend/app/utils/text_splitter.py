@@ -36,7 +36,6 @@ def split_text(
         )
 
         chunks = splitter.split_text(text)
-        logger.info("Split text into %d chunks.", len(chunks))
         return chunks
 
     except Exception as e:

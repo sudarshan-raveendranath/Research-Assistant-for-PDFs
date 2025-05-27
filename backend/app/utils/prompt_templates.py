@@ -29,10 +29,7 @@ def get_summary_prompt() -> BasePromptTemplate:
             "Context:\n{context}"
         )
 
-        return ChatPromptTemplate.from_messages([
-            ("system", system_prompt),
-            ("human", "{input}")
-        ])
+        return ChatPromptTemplate.from_template(system_prompt)
 
     except Exception as e:
         logger.error("Failed to create research summary prompt: %s", str(e), exc_info=True)
