@@ -16,3 +16,10 @@ def save_pdf_summary(title: str, summary: str, model: str, owner: str):
         db.commit()
     finally:
         db.close()
+        
+def get_user_pdfs(username: str):
+    db = SessionLocal()
+    try:
+        return db.query(UploadedPDF).filter(UploadedPDF.owner == username).all()
+    finally:
+        db.close()

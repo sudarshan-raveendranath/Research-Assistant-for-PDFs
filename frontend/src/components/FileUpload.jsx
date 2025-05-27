@@ -3,7 +3,7 @@ import { useState } from 'react';
 import API from '../api/axios';
 import { CircularProgress } from '@mui/material';
 
-export default function FileUpload() {
+export default function FileUpload({ isAuthenticated }) {
     const [file, setFile] = useState(null);
     const [model, setModel] = useState('gemini');
     const [summary, setSummary] = useState('');
@@ -131,6 +131,7 @@ export default function FileUpload() {
                                 type="file"
                                 accept=".pdf"
                                 onChange={handleFileChange}
+                                disabled={!isAuthenticated}
                                 style={{
                                     cursor: 'pointer',
                                     fontWeight: 'bold',
@@ -156,6 +157,7 @@ export default function FileUpload() {
                         <Select
                             value={model}
                             onChange={(e) => setModel(e.target.value)}
+                            disabled={!isAuthenticated}
                             sx={{
                                 backgroundColor: '#FFD700',
                                 borderRadius: '10px',
@@ -179,7 +181,7 @@ export default function FileUpload() {
                     <Button
                         variant="contained"
                         onClick={handleSummarize}
-                        disabled={!file}
+                        disabled={!file || !isAuthenticated}
                         sx={{
                             padding: '12px 30px',
                             backgroundColor: '#070738',
