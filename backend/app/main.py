@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.auth import users
 from app.database.database import engine, Base
+from app.routes import upload_routes
 
 Base.metadata.create_all(bind=engine)
 
@@ -15,4 +16,5 @@ app.add_middleware(
 )
 
 app.include_router(users.router, prefix="/auth")
+app.include_router(upload_routes.router, tags=["PDF Upload and Summarization"])
 
