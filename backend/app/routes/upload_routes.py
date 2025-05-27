@@ -6,6 +6,7 @@ from app.utils.embedding_generator import get_embeddings_model
 from app.utils.vector_store import create_faiss_index
 from app.services.summerizer_service import generate_rag_summary
 from langchain.schema import Document
+from app.state.user_state import user_latest_titles
 from fastapi import Form
 import aiofiles
 import tempfile
@@ -34,6 +35,9 @@ async def upload_pdf(
         pages = await load_pdf_pages(file_path)
         pdf_text = "\n".join([page.page_content for page in pages])
         title = os.path.splitext(file.filename)[0]
+        
+        user_id = current_user.username
+        user_latest_titles[user_id] = title
         
         chunks = split_text(pdf_text)
         embeddings_model = get_embeddings_model()

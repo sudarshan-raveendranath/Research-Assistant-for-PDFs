@@ -14,6 +14,10 @@ export default function Header() {
     navigate('/');
   };
 
+  const handleSummariesClick = () => {
+    navigate('/summaries');
+  };
+
   return (
     <Box sx={{ margin: '16px', borderRadius: '16px', overflow: 'hidden' }}>
       <AppBar
@@ -36,6 +40,29 @@ export default function Header() {
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+            <Button
+              onClick={handleSummariesClick}
+              disabled={!isAuthenticated}
+              sx={{
+                textTransform: 'none',
+                fontWeight: 600,
+                fontSize: '1.2rem',
+                fontFamily: "'Concert One', sans-serif",
+                backgroundColor: '#070738',
+                color: '#FFD700',
+                borderRadius: '16px',
+                px: 3,
+                py: 1,
+                opacity: isAuthenticated ? 1 : 0.5,
+                '&:hover': {
+                  backgroundColor: isAuthenticated ? '#000022' : '#070738',
+                  color: isAuthenticated ? '#FFF176' : '#FFD700',
+                },
+              }}
+            >
+              My Summaries
+            </Button>
+
             {!isAuthenticated ? (
               <>
                 <Button
