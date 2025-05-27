@@ -1,6 +1,6 @@
 import React from 'react';
 import FileUpload from '../components/FileUpload';
-import ChatBotPopup from '../components/ChatBotPopup'; // Adjust path
+import ChatBotPopup from '../components/ChatBotPopup';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 

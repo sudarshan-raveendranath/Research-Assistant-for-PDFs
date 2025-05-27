@@ -134,7 +134,6 @@ const ChatBotPopup = ({ disabled = false }) => {
                         boxShadow: '0 0 20px rgba(255, 215, 0, 0.7)',
                     }}
                 >
-                    {/* Header */}
                     <Box
                         sx={{
                             display: 'flex',
@@ -151,7 +150,6 @@ const ChatBotPopup = ({ disabled = false }) => {
                         </IconButton>
                     </Box>
 
-                    {/* Messages */}
                     <Box
                         ref={messagesContainerRef}
                         onScroll={handleScroll}
@@ -195,7 +193,6 @@ const ChatBotPopup = ({ disabled = false }) => {
                         <div ref={messagesEndRef} />
                     </Box>
 
-                    {/* Scroll To Bottom Button */}
                     {showScrollToBottom && (
                         <Fab
                             size="small"
@@ -217,7 +214,6 @@ const ChatBotPopup = ({ disabled = false }) => {
                         </Fab>
                     )}
 
-                    {/* Input Area */}
                     <Box sx={{ p: 2, borderTop: '1px solid #ccc', bgcolor: '#fff' }}>
                         <TextField
                             fullWidth
