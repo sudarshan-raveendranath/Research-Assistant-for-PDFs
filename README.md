@@ -1,6 +1,6 @@
 # Research Assistant for PDFs
 
-![Research Assistant Demo](demo-image.png) *Replace with your actual demo image*
+![Research Assistant Demo](./screenshots/Screenshot1.png) *Replace with your actual demo image*
 
 A full-stack application that helps researchers by automatically generating structured summaries from uploaded PDFs and providing a question-answering interface powered by multiple LLMs.
 
@@ -67,7 +67,7 @@ A full-stack application that helps researchers by automatically generating stru
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/research-assistant.git
+   git clone https://github.com/sudarshan-raveendranath/Research-Assistant-for-PDFs.git
    cd research-assistant
     ```
 2. **Set up the backend**
@@ -159,9 +159,9 @@ research-assistant/
 ```
 
 ## Screenshots
-![Screenshot 1](screenshots/screenshot1.png) *Replace with your actual screenshot*
-![Screenshot 2](screenshots/screenshot2.png) *Replace with your actual screenshot*
-![Screenshot 3](screenshots/screenshot3.png) *Replace with your actual screenshot*
+![Screenshot 1](./screenshots/Screenshot2.png) *Replace with your actual screenshot*
+![Screenshot 2](./screenshots/Screenshot3.png) *Replace with your actual screenshot*
+![Screenshot 3](./screenshots/Screenshot4.png) *Replace with your actual screenshot*
 
 ## Future Improvements
 
