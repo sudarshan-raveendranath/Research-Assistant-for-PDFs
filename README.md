@@ -1,6 +1,6 @@
 # Research Assistant for PDFs
 
-![Research Assistant Demo](./screenshots/Screenshot1.png) *Replace with your actual demo image*
+![Research Assistant Demo](./screenshots/Screenshot1.png) *Homepage*
 
 A full-stack application that helps researchers by automatically generating structured summaries from uploaded PDFs and providing a question-answering interface powered by multiple LLMs.
 
@@ -159,9 +159,9 @@ research-assistant/
 ```
 
 ## Screenshots
-![Screenshot 1](./screenshots/Screenshot2.png) *Replace with your actual screenshot*
-![Screenshot 2](./screenshots/Screenshot3.png) *Replace with your actual screenshot*
-![Screenshot 3](./screenshots/Screenshot5.png) *Replace with your actual screenshot*
+![Screenshot 1](./screenshots/Screenshot2.png) *Generated Summary*
+![Screenshot 2](./screenshots/Screenshot3.png) *Summary History*
+![Screenshot 3](./screenshots/Screenshot4.png) *Detailed History Item*
 
 ## Future Improvements
 
