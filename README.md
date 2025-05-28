@@ -50,7 +50,7 @@ A full-stack application that helps researchers by automatically generating stru
   <img src="https://img.shields.io/badge/Ollama-7D7DFF?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama" />
   <img src="https://img.shields.io/badge/DeepSeek-00CCFF?style=for-the-badge&logo=deepseek&logoColor=black" alt="DeepSeek" />
   <br>
-  <small>Models: Gemini-1.5-flash | Llama3.2:3b (Ollama) | deepseek-r1:1.5b (DeepSeek)</small>
+  <small>Models: Gemini-1.5-flash | Llama3.2:3b (Ollama) (Local LLM) | deepseek-r1:1.5b (Ollama) (Local LLM)</small>
 </p>
 
 ## Getting Started
