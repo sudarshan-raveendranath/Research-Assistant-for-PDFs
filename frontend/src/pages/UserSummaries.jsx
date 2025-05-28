@@ -59,15 +59,16 @@ export default function UserSummaries() {
   };
 
   function parseSummary(summaryString) {
+    const cleaned = summaryString.replace(/\\n/g, '\n');
     const sectionRegex = /\*\*(.+?):\*\*/g;
     const result = [];
     let match;
     let lastIndex = 0;
     let lastTitle = null;
 
-    while ((match = sectionRegex.exec(summaryString)) !== null) {
+    while ((match = sectionRegex.exec(cleaned)) !== null) {
       if (lastTitle !== null) {
-        const content = summaryString.substring(lastIndex, match.index).trim();
+        const content = cleaned.substring(lastIndex, match.index).trim();
         result.push({ title: lastTitle, content });
       }
       lastTitle = match[1].trim();
@@ -77,12 +78,13 @@ export default function UserSummaries() {
     if (lastTitle) {
       result.push({
         title: lastTitle,
-        content: summaryString.substring(lastIndex).trim(),
+        content: cleaned.substring(lastIndex).trim(),
       });
     }
 
     return result;
   }
+
 
   return (
     <Box
