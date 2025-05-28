@@ -161,7 +161,7 @@ research-assistant/
 ## Screenshots
 ![Screenshot 1](./screenshots/Screenshot2.png) *Replace with your actual screenshot*
 ![Screenshot 2](./screenshots/Screenshot3.png) *Replace with your actual screenshot*
-![Screenshot 3](./screenshots/Screenshot4.png) *Replace with your actual screenshot*
+![Screenshot 3](./screenshots/Screenshot5.png) *Replace with your actual screenshot*
 
 ## Future Improvements
 
