@@ -20,7 +20,7 @@ router = APIRouter(prefix="/pdf", tags=["PDF Upload and Summarization"])
 
 @router.post("/upload")
 async def upload_pdf(
-    model: str = Form(...),  # <== changed from model_data: PDFUploadRequest
+    model: str = Form(...),
     file: UploadFile = File(...),
     current_user: str = Depends(get_current_user)
 ):

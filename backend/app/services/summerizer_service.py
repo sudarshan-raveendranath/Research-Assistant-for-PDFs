@@ -4,6 +4,7 @@ from app.utils.prompt_templates import get_summary_prompt
 from app.utils.rag_chain_builder import create_rag_chain
 from app.llms.gemini import get_gemini_llm
 from app.llms.ollama import get_ollama_llm
+from app.llms.deepseek import get_deepseek_llm
 from app.services.pdf_service import save_pdf_summary
 import logging
 
@@ -59,7 +60,7 @@ async def generate_rag_summary(model_choice: str, title: str, owner: str):
                 "Please refine and generate the final summary below:"
             )
 
-            refined_summary = get_gemini_llm().invoke(refinement_prompt).content
+            refined_summary = get_deepseek_llm().invoke(refinement_prompt).content
             logger.info("Refined summary generated.")
 
             save_pdf_summary(title, refined_summary, "gemini_ollama", owner)
